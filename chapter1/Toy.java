@@ -1,4 +1,4 @@
-
+package chapter1;
 public class Toy {
     String name;
     String brand;

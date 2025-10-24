@@ -1,5 +1,5 @@
 package otherfolders;
-import chapter1.*;
+import chapter1.Toy;
 
 
 public class SunFlower {

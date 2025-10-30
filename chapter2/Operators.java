@@ -1,19 +1,22 @@
 package chapter2;
-
 public class Operators {
     public static void main(String[] args) {
-       System.out.println(15>>>1);
+        //shift ops
         System.out.println(2<<2);
-        // 2 shorts = int
-        //if what is the higher number will be promoted   
-        System.out.println(+2+ +62);
+        System.out.println(15>>1);
+
+        System.out.println(+3 + +6);
         int a = 0;
         System.out.println(a++);
-        System.out.println(a++ - ++a);
+        System.out.println(a);//1
+        System.out.println(++a);//2
         System.out.println(a);
-        
-        String output = "H3llo w0rld";
-        System.out.println(output);
+        short x = 10;
+        short y = 30;
+        short z =(short) (x*y);
+        System.out.println("z="+z);
+        System.out.println(a++ - ++a); //2 - 4
+        System.out.println(a);
     }
     
 }

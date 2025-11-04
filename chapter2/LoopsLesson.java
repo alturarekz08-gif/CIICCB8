@@ -29,6 +29,9 @@ public class LoopsLesson {
             }
             System.out.println();
         }
+        String[] colors = {"Black","Red","Pink","Yellow","White","Blue"};
+        for(String color: colors)
+            System.out.println("color: "+color);
          
     }
 }

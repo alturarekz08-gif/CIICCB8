@@ -17,16 +17,16 @@ public class Task2 {
     }
        
 }
- // another exercise for task2
-class  Take2 {
-    public static void main(String[] args) {
-        byte zero = 0;
-        short one = 1;
-        char C = 'C';
-        char a = 'a';
+//  // another exercise for task2
+// class  Take2 {
+//     public static void main(String[] args) {
+//         byte zero = 0;
+//         short one = 1;
+//         char C = 'C';
+//         char a = 'a';
         
 
-        String input = C + "" + a + one + "c" + "u" + one + a + "t" + zero + "r";
-        System.out.println(input);
-    }
-}
+//         String input = C + "" + a + one + "c" + "u" + one + a + "t" + zero + "r";
+//         System.out.println(input);
+//     }
+// }

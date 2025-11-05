@@ -11,6 +11,12 @@ public class ArrayLesson {
             System.out.println(numbers3[j]);
         // int[] table[];
         // table[row][col]
+
+        String [] bugs = {"cricket", "grasshopper", "cackroach"};
+        String [] alias = bugs;
+        System.out.println(bugs.equals(alias));
+        System.out.println(bugs.toString());
+
     }
 }
 class Student{

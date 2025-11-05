@@ -12,8 +12,8 @@ public class Practice {
         // System.out.println(string.indexOf("al", 5));
         // System.out.println(string.substring( 3, 7));
 
-        int a = 9;
-        int b = 9;
+        int a = 3;
+        int b = 5;
         int c = 9;
 
         if (a == b  && b == c) {
@@ -23,12 +23,13 @@ public class Practice {
             System.out.println("c is higher than b");
             
         } else {
-            System.out.println("all numbers are equal");
+            System.out.println("c is higher than a & b");
         }
         
-    
+        
     
     }
     
 }
 
+    

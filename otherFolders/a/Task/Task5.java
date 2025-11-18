@@ -1,3 +1,4 @@
+package otherFolders.a.Task;
 import java.util.Scanner;
 
 public class Task5 {

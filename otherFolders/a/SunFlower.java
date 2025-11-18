@@ -1,4 +1,4 @@
-package a;
+package otherFolders.a;
 import chapter1.*;
 import chapter4.AccessModifier;
 

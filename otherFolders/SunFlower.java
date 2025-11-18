@@ -1,4 +1,4 @@
-package otherfolders;
+package otherFolders;
 import chapter1.Toy;
 
 

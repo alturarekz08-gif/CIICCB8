@@ -27,6 +27,24 @@ public class LambdaExercise {
             {5, 6},
             {7, 8}
     };
+    functionX f = (x) -> x * x;
+    functionX derivative = (x) -> {
+        double h =2e-10;
+        return (f.apply(x + h) - f.apply(x - h)) / (2 * h);
+    };
+    functionX g = x -> x * x;
+    IntegralOp integral = (func, a, b) -> {
+        int n = 10_000;
+        double dx = (b - a) / n;
+        double sum = 0;
+
+        for(int i = 0; i < n; i++) {
+            double x = a + i * dx;
+            sum += func.apply(x) * dx;
+        }
+        return sum;
+        };
+    
 
         List<Vehicle> cars = new ArrayList<Vehicle>();
         cars.add(new Vehicle("Nissan", false, true, 10));
@@ -86,6 +104,10 @@ public class LambdaExercise {
                         A[1][0]*B[0][1] + A[1][1]*B[1][1]
                     }
                 };
+                MatrixOP mSub = (A,B) -> new double[][]{
+                    {A[0][0] - B[0][0], A[0][1] - B[0][1]},
+                    {A[1][0] - B[1][0], A[1][1] - B[1][1]}
+                };
                 
                 
                 
@@ -99,7 +121,9 @@ public class LambdaExercise {
                 System.out.println("Cube Vol: " + cube.compute(3.1416));
                 System.out.println("Matrix Add: " + Arrays.deepToString(madd.apply(m1,m2)));
                 System.out.println("Matrix Mul: " + Arrays.deepToString(mMul.apply(m1,m2)));
-
+                System.out.println("Matrix Sub: " + Arrays.deepToString(mSub.apply(m1,m2)));
+                System.out.println("f'(5) ≈ " + derivative.apply(5));
+                System.out.println("∫ x^2 dx from 0 to 3 ≈ " + integral.compute(f, 0, 3));
 
 
 
@@ -141,4 +165,10 @@ interface VolumeOp {
 }
 interface MatrixOP {
     double[][] apply(double[][] a, double[][] b);
+}
+interface functionX {
+    double apply(double x);
+}
+interface IntegralOp {
+    double compute(functionX f, double a, double b);
 }

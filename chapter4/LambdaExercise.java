@@ -125,7 +125,7 @@ public class LambdaExercise {
                 System.out.println("f'(5) ≈ " + derivative.apply(5));
                 System.out.println("∫ x^2 dx from 0 to 3 ≈ " + integral.compute(f, 0, 3.14/2));
 
-
+            
 
 
     }

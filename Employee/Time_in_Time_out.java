@@ -1,5 +1,3 @@
-
-
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,89 +11,99 @@ public class Time_in_Time_out {
     // Added a formatter for a cleaner look in 2026
     static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 
-    static void main() {
+    public static void main(String[] args) {
         boolean running = true;
 
 
         while (running) {
             System.out.println("\n======Employee Biometrics======");
-            System.out.println("1. Add Employee (Time-in) "); //name
-            System.out.println("2. Add Employeeid "); //employeedid
-            System.out.println("3. time-in"); //timein
-            System.out.println("4. time-out "); //timeout
-            System.out.println("5. exit ");
-            System.out.println("choose option's? ");
+            System.out.println("1. Register & Log-in"); //name
+            System.out.println("2. View All Records "); //employeedied
+            System.out.println("3. Log-out "); //timeout
+            System.out.println("4. exit ");
+            System.out.println("choose option: ? ");
+
+            // Input validation for menu
+            // Input validation for menu
+            if (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.nextLine();
+                continue;
+            }
 
             int choice = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); //consume new line
 
             switch (choice) {
                 case 1:
-                   addemployeename();
-                   break;
-//                case 2:
-//                    addemployeeid();
-//                    break;
+                    addEmployee();
+                    break;
+                case 2:
+                    viewAttendance();
+                    break;
                 case 3:
-                    viewtimein();
+                    recordTimeout();
                     break;
                 case 4:
-                    viewtimeout();
-                    break;
-                case 5:
                     running=false;
                     System.out.println("Program Exited ");
                     break;
-                    
+                default:
+                    System.out.println("Invalid Choice ");
+
 
 
             }
         }
     }
-    static void addemployeename() {
-
-        System.out.println("Enter EmployeeName");
+    static void addEmployee() {
+        System.out.println("Enter Employee Name: ");
         String name = scanner.nextLine();
 
 
-        System.out.println("Add EmployeeID");
-        int employeeid = scanner.nextInt();
+        System.out.println("Add Employee ID: ");
+        int id = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Employee added. Time-in recorded!");
+        // FIX: You must actually create the object and add it to the list
+        Employee newEmp = new Employee(name, id);
+
+        System.out.println("Employee " + name + " added and Time-in recorded at " + newEmp.timein.format(dtf));
     }
 
-    static void viewtimein() {
-        System.out.println("\n-- Employee Time-in List --- ");
+    static void viewAttendance() {
+        System.out.println("\n-- Attendance List --- ");
         if (employees.isEmpty()) {
-            System.out.println("No  Employees yet.!");
-        }
-        for (Employee e : employees) {
-            System.out.println(e);
+            System.out.println("No Record Found !");
+        } else {
+            for (Employee e : employees) {
+                System.out.println(e);
+            }
+
         }
 
     }
-    static void viewtimeout() {
+    static void recordTimeout() {
         System.out.print("Enter Employee ID to time-out: ");
         int id = scanner.nextInt();
         scanner.nextLine();
 
+        boolean found = false;
         for (Employee e : employees) {
             if (e.getEmployeeid() == id) {
                 e.setTimeout();
-                System.out.println("Time-out recorded!");
-                return;
+                System.out.println("Time-out recorded for " + e.name + " at " + e.timeout.format(dtf));
+                found = true;
+                break;
             }
         }
 
-        System.out.println("Employee not found.");
+            if (!found) {
+                System.out.println("Error: Employee ID not found.");
+            }
     }
 
-
-
-
-
-    class Employee {
+    static class Employee {
         private String name;
         private int employeeid;
         private LocalTime timein;
@@ -105,6 +113,7 @@ public class Time_in_Time_out {
             this.name = name;
             this.employeeid = employeeid;
             this.timein = LocalTime.now();
+            this.timeout = LocalTime.now();
         }
 
         public int getEmployeeid(){
@@ -117,10 +126,11 @@ public class Time_in_Time_out {
 
         @Override
         public String toString() {
-            return "Name: " + name +
-                    " | ID: " + employeeid +
-                    " | Time-In: " + timein +
-                    " | Time-Out: " + (timeout == null ? "N/A" : timeout);
+            return String.format("ID: %-5d | Name: %-10s | In: %-10s | Out: %-10s",
+                    employeeid,
+                    name,
+                    timein.format(dtf),
+                    (timeout == null ? "STILL IN" : timeout.format(dtf)));
         }
     }
 

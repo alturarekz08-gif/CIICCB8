@@ -67,9 +67,11 @@ public class Time_in_Time_out {
 
         // FIX: You must actually create the object and add it to the list
         Employee newEmp = new Employee(name, id);
+        employees.add(newEmp);
 
-        System.out.println("Employee " + name + " added and Time-in recorded at " + newEmp.timein.format(dtf));
-    }
+        System.out.println("Employee " + name +
+                " added and Time-in recorded at " +
+                newEmp.timein.format(dtf));    }
 
     static void viewAttendance() {
         System.out.println("\n-- Attendance List --- ");
@@ -122,6 +124,9 @@ public class Time_in_Time_out {
 
         public void setTimeout() {
             this.timeout = LocalTime.now();
+        }
+        public void insertEmployee() {
+            
         }
 
         @Override

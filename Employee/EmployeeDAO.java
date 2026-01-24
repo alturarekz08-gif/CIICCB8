@@ -1,4 +1,4 @@
-public CREATE DATABASE employer;
+// public CREATE DATABASE employer;
 
 // CREATE TABLE worker (
 //     id INT PRIMARY KEY,
